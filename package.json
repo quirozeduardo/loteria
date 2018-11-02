@@ -1,0 +1,39 @@
+{
+  "name": "loteria",
+  "version": "1.0.0",
+  "description": "Juego de loteria",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "node_modules/.bin/webpack --progress --hide-modules --mode=development --config=webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "prod": "npm run production",
+    "production": "node_modules/.bin/webpack --no-progress --hide-modules --mode=production --config=webpack.production.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quirozeduardo/loteria.git"
+  },
+  "keywords": [
+    "loteria",
+    "juego",
+    "azar"
+  ],
+  "author": "Jesus Eduardo Quiroz Palomo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quirozeduardo/loteria/issues"
+  },
+  "homepage": "https://github.com/quirozeduardo/loteria#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "copy-webpack-plugin": "^4.6.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "phaser": "^3.15.1"
+  }
+}
