@@ -10,7 +10,7 @@ const config ={
     type: Phaser.CANVAS,
     width: width,
     height: height,
-    parent: 'loteria',
+    parent: document.getElementById('loteria'),
     backgroundColor: '#392542',
     scene:[
         Bootloader,

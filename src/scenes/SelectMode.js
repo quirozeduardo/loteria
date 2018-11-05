@@ -1,4 +1,4 @@
-import ButtonSprite from "../gameObjects/ButtonSprite";
+import ButtonText from "../gameObjects/ButtonText";
 
 export default class SelectMode extends Phaser.Scene
 {
@@ -11,25 +11,20 @@ export default class SelectMode extends Phaser.Scene
     create()
     {
         this.setBg(this);
-        this.button1 = new ButtonSprite(this, 225, 300, 'button',{
-            frameStart:1, 
-            frameOver:2, 
-            frameClick: 0,
-            action: () => {
-                this.scene.start('Board');
-            }
-        });
-        
-        this.button2 = new ButtonSprite(this, 675, 300, 'button',{
-            frameStart:1, 
-            frameOver:2, 
-            frameClick: 0,
-            action: () => {
-                this.scene.start('DeckTable');
-            }
-        });
+        this.addWelcome();
 
-    
+        var btn1 = new ButtonText(this,675,300,170,50,'Barajar');
+        btn1.button.action =()=>{
+            this.scene.start('DeckTable');
+        };
+
+        var btn2 = new ButtonText(this,225,300,170,50,'Tabla','red');
+        btn2.button.action =()=>{
+            this.scene.start('Board');
+        };
+        
+
+        
     }
     setBg(scene)
     {
@@ -42,6 +37,14 @@ export default class SelectMode extends Phaser.Scene
         var scaleY = gH/bgHeigh;
         this.background.scaleX = scaleX;
         this.background.scaleY = scaleY;
+    }
+    addWelcome()
+    {
+        var gW = this.sys.game.config.width;
+        var gH = this.sys.game.config.height;
+        var text1 = this.add.text(gW/2, gH/4, "Bienvenid@", { fontFamily: "Arial Black", fontSize: 74, color: "#148671" });
+        text1.setStroke('#2FCBCB', 16);
+        text1.setOrigin(0.5);
     }
     
     

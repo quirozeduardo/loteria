@@ -4,6 +4,7 @@ export default class ButtonSprite extends Phaser.GameObjects.Sprite
     constructor(scene, x, y, texture, options = {frameStart: 0, frameOver: 0, frameClick: 0, action: null})
     {
         super(scene, x, y, texture, (options.frameStart != undefined)?options.frameStart:0);
+        this.options = options;
         this.frameOver = (options.frameOver != undefined)?options.frameOver:null;
         this.frameClick = (options.frameClick != undefined)?options.frameClick:null;
         this.frameStart = (options.frameStart != undefined)?options.frameStart:0;

@@ -1,6 +1,7 @@
 import Card from "../gameObjects/Card";
 import CardFlip from "../gameObjects/CardFlip";
 import ButtonSprite from "../gameObjects/ButtonSprite";
+import ButtonText from "../gameObjects/ButtonText";
 
 export default class DeckTable extends Phaser.Scene
 {
@@ -46,6 +47,7 @@ export default class DeckTable extends Phaser.Scene
                 this.tweens.add({
                     targets: cf,
                     scaleY: cf.tmpScaleY,
+                    scaleX: cf.tmpScaleX,
                     duration: 100,
                     ease: 'Power1'
                 });
@@ -60,15 +62,17 @@ export default class DeckTable extends Phaser.Scene
             });
 
         }
-        let buttonRestore = new ButtonSprite(this,750,300,'button',{frameStart: 1, frameOver: 2, frameClick: 3, action: ()=>{
+
+        var buttonRestore = new ButtonText(this,750,300,170,50,'Barajar','green');
+        buttonRestore.button.action =()=>{
             this.scene.start('DeckTable');
-        }});
-        buttonRestore.setScale(1);
-        let buttonBack = new ButtonSprite(this,150,300,'button',{frameStart: 1, frameOver: 2, frameClick: 3, action: ()=>{
+        };
+
+
+        var buttonBack = new ButtonText(this,150,300,170,50,'Atras','red');
+        buttonBack.button.action =()=>{
             this.scene.start('SelectMode');
-        }});
-        buttonBack.setScale(1);
-        
+        };
         
     }
     addToFlippedList(num)

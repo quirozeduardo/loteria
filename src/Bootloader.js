@@ -9,7 +9,9 @@ export default class Bootloader extends Phaser.Scene
         this.load.path = './assets/'
 
         //Buttons
-        this.load.spritesheet('button', 'buttons/button_sprite_sheet.png', {frameWidth:193, frameHeight: 71});
+        this.load.atlas('btn_blue', 'buttons/btn_blue.png', 'buttons/btn_atlas.json');
+        this.load.atlas('btn_green', 'buttons/btn_green.png', 'buttons/btn_atlas.json');
+        this.load.atlas('btn_red', 'buttons/btn_red.png', 'buttons/btn_atlas.json');
 
         //Cards
         this.load.image('card_1','pics/baraja/1.png');
