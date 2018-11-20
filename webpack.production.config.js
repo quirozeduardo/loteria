@@ -7,7 +7,7 @@ var phaser = path.join(phaserModule, 'src/phaser.js')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
     entry: {
-        app: ['./node_modules/phaser/dist/phaser.js','./src/main.js'],
+        app: ['./node_modules/phaser/dist/phaser.min.js','./src/main.js'],
     },
     output: {
         filename: '[name].js',

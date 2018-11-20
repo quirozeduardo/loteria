@@ -5,8 +5,7 @@ export default class Board extends Phaser.Scene{
     constructor()
     {
        super({key: 'Board'});
-       
-       
+       this.ficha = 'ficha';
        
     }
 
@@ -29,19 +28,12 @@ export default class Board extends Phaser.Scene{
         }
         this.board = this.selectBoardRandom();
         for(let i=2; i<=5; i++){
-            let f = this.add.sprite(100,105*i,'frijolito');
-            f.setScale(0.4);
-            f.isOnBoard = false;
-            this.fichas.push(f);
-            this.dragAndDrop(f);
+            this.addFicha(100, 105 * i ,85 ,85 ,this.ficha);
         }
         for(let i=1; i<=5; i++){
-            let f = this.add.sprite(800,105*i,'frijolito');
-            f.setScale(0.4);
-            f.isOnBoard = false;
-            this.fichas.push(f);
-            this.dragAndDrop(f);
+            this.addFicha(800, 105 * i ,85 ,85 ,this.ficha);
         }
+
 
         var buttonRestore = new ButtonText(this,100,130,170,50,'Restablecer','green');
         buttonRestore.button.action =()=>{
@@ -61,6 +53,34 @@ export default class Board extends Phaser.Scene{
         };
         buttonChange.setScale(0.6);
         this.sizing();
+    }
+    addFicha(x, y, width, height, ficha)
+    {
+        let f = this.add.sprite(x,y,ficha);
+        let sX = width / f.width;
+        let sY = height / f.height;
+        f.scaleX = sX;
+        f.scaleY = sY;
+        f.isOnBoard = false;
+        this.fichas.push(f);        
+        this.dragAndDrop(f);
+        
+    }
+
+    addFichaOptions(x, y, width, height, name)
+    {
+        let f = this.add.sprite(x,y,name);
+        let sX = width / f.width;
+        let sY = height / f.height;
+        f.scaleX = sX;
+        f.scaleY = sY;
+        f.setInteractive();
+        f.on('pointerup',()=>{
+            for(var i= 0; i < this.fichas.length; i++)
+            {
+                this.replaceFicha(this.fichas[i],85,85,name);
+            }
+        });
     }
     restore(sprite)
     {
@@ -187,7 +207,7 @@ export default class Board extends Phaser.Scene{
                 this.boardArrControl[iC][jC].ocuped = true;
                 this.boardArrControl[iC][jC].ocupedBy = sprite;
 
-                sprite.x = fx+(sprite.width/2);
+                sprite.x = fx + (200/2);
                 sprite.y = fy;
 
             }

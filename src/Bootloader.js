@@ -98,7 +98,10 @@ export default class Bootloader extends Phaser.Scene
         this.load.image('board_24','pics/tableros/7tb2.png');
 
         //others
-        this.load.image('frijolito','pics/frijolito.png');
+        this.load.image('ficha','pics/ficha.png');
+        //this.load.image('bean','pics/bean.png');
+        //this.load.image('maiz','pics/maiz.png');
+        //this.load.image('piedra','pics/piedra.png');
         this.load.image('card_back_main','pics/card_back_main.png');
         this.load.image('background','pics/background.png');
 
